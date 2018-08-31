@@ -30,7 +30,7 @@ The goals / steps of this project are the following:
 
 **Requirements**
 
-* [Anacoda 3](https://www.anaconda.com/download/) is installed on your machine.
+* [Anaconda 3](https://www.anaconda.com/download/) is installed on your machine.
 * Download the [data set](https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/traffic-signs-data.zip)
 
 ---
@@ -81,7 +81,7 @@ signs data set:
 
 ### 2. Exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. The graph shows a histogram of all classes in the three datasets. The blue line shows the distirbution for the training set, orange shows the validation set and green shows the testing set. 
+Here is an exploratory visualization of the data set. The graph shows a histogram of all classes in the three datasets. The blue line shows the distribution for the training set, orange shows the validation set and green shows the testing set. 
 
 ![Histogram of classes per dataset][histogram]
 
@@ -92,7 +92,7 @@ Here is an exploratory visualization of the data set. The graph shows a histogra
 
 #### 1. Contrast enhancement
 
-The graph shows the RGB histogram of the original image. There is a big spike for all three color chanels around 30 (with a maximum of 160) hence the image seems to be very dark.
+The graph shows the RGB histogram of the original image. There is a big spike for all three color channels around 30 (with a maximum of 160) hence the image seems to be very dark.
 
 ![RGB histogram of the original image][orig_rgb_hist]
 
@@ -128,7 +128,7 @@ My final model consisted of the following layers:
 | Dropout            | conv1_dropout | 0.8 keep_rate                                           |
 | Convolution 5x5    | conv2         | 1x1 strides, VALID padding, outputs 10x10x16            |
 | RELU               | conv2_relu    |                                                         |
-| Max pooling        | conv2_maxpool | 2x2 strides, 2x2 kernelSAME padding, outputs 5x5x16     |
+| Max pooling        | conv2_maxpool | 2x2 strides, 2x2 kernel, SAME padding, outputs 5x5x16   |
 | Dropout            | conv2_dropout | 0.8 keep_rate                                           |
 | Fully connected    | fc1           | 400 inputs, outputs 120                                 |
 | RELU               | fc1_relu      |                                                         |
@@ -143,7 +143,7 @@ My final model consisted of the following layers:
 ### 3. Training
 To train the model, I used the following parameters:
 
-* Optimizer: Adam omptimizer
+* Optimizer: Adam optimizer
 * Batch size: 128
 * Epochs: 20
 * Learning rate: 0.001
@@ -165,7 +165,7 @@ If an iterative approach was chosen:
   * The LeNet architecture had to be adapted to the give image size
   * The original architecture tended to overfit
 * How was the architecture adjusted and why was it adjusted?
-  * The input depth was adjusted to handle RDG images
+  * The input depth was adjusted to handle RGB images
   * Size of the fully connected layers had to be adjusted to the new depth
   * Dropout was introduced to both convolutional and fully connected layers to prevent the model from overfitting
 * Which parameters were tuned? How were they adjusted and why?
@@ -179,7 +179,7 @@ If a well known architecture was chosen:
 * Why did you believe it would be relevant to the traffic sign application?
   * Since it proved itself for similar tasks
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
-  * All three accuracies are quite high. This should be an indicator that the general architacture is ok and the model is not underfitting too much
+  * All three accuracies are quite high. This should be an indicator that the general architecture is ok and the model is not underfitting too much
   * Training and validation accuracy are close to each other so the model does not seem to overfit
   * Test accuracy is quite high which underlines the two points above
  
@@ -193,7 +193,7 @@ Here are five German traffic signs that I found on the web:
 ![Traffic Sign 1][web_img_01] ![Traffic Sign 2][web_img_02] ![Traffic Sign 3][web_img_03] 
 ![Traffic Sign 4][web_img_04] ![Traffic Sign 5][web_img_05]
 
-The first two images might be difficult to classify since speed limit signs look very similar to each other, especially with a 32x32 resolution. The third image should not be too hard. The fourth and the fifth image might be harder again, for the same reason as abov.
+The first two images might be difficult to classify since speed limit signs look very similar to each other, especially with a 32x32 resolution. The third image should not be too hard. The fourth and the fifth image might be harder again, for the same reason as above.
 
 ### 2. Model's predictions
 
@@ -212,9 +212,9 @@ The model was able to correctly guess 4 of the 5 traffic signs, which gives an a
 
 ### 3. Certainty of the model
 
-The code for making predictions on my final model is located in the 25th cell of the Ipython notebook.
+The code for making predictions on my final model is located in the 25th cell of the IPython notebook.
 
-For the first image, the model classifies the immage correctly but it is not very sure since other speed limit signs seem to be quite similar. The top five soft max probabilities were
+For the first image, the model classifies the image correctly but it is not very sure since other speed limit signs seem to be quite similar. The top five soft max probabilities were
 
 | Probability   |     Prediction	       	| 
 |:-------------:|:-------------------------:| 
@@ -250,13 +250,13 @@ For the fourth image, the model is almost as confident as it is for the third im
 
 | Probability   |     Prediction	       	| 
 |:-------------:|:-------------------------:| 
-| **.9999*     	| **Ahead only**	    	| 
+| **.9999**     	| **Ahead only**	    	| 
 | .00001   		| Turn left ahead	    	|
 | 0		    	| Turn right ahead         	|
 | 0		    	| Go straight or right		|
 | 0 		    | Go straight or left		|
 
-For the fifth image, the model again is completely ure that this image contains a *keep right* sign, and it does contain this sign.
+For the fifth image, the model again is completely sure that this image contains a *keep right* sign, and it does contain this sign.
 
 | Probability   |     Prediction	       	| 
 |:-------------:|:-------------------------:| 
@@ -273,4 +273,4 @@ The image shows the feature map of the first convolutional layer:
 
 ![Feature map of first convolutional layer][fm_conv1]
 
-According to th efeature maps the characteristics of this layer are the read edge of the *30 km/h* sign and the number 30 in the middle of the sign. This layer already shows a comprehensive list of features, that identify the sign.
+According to the feature maps the characteristics of this layer are the read edge of the *30 km/h* sign and the number 30 in the middle of the sign. This layer already shows a comprehensive list of features, that identify the sign.
